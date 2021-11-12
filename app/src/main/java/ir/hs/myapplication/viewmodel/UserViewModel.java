@@ -2,9 +2,13 @@ package ir.hs.myapplication.viewmodel;
 
 import android.content.Context;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import ir.hs.myapplication.BR;
 import ir.hs.myapplication.model.user;
 
-public class UserViewModel {
+public class UserViewModel  extends BaseObservable {
 
     private String name;
     private  String phone;
@@ -19,13 +23,14 @@ public class UserViewModel {
     public UserViewModel(Context context) {
         this.context = context;
     }
-
+@Bindable
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name){
+    this.name = name;
+    notifyPropertyChanged(BR.name);
     }
 
     public String getPhone() {
